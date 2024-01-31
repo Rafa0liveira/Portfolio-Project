@@ -1,0 +1,46 @@
+﻿@model CoursesModel
+@{
+    ViewData["Title"] = "Add new Course";
+}
+
+<div class="container bg-primary-subtle p-5 rounded-5">
+    <div class="mb-1 text-center">
+        <h3 class="text-dark">@ViewData["Title"]</h3>
+    </div>
+
+<form method="post" asp-controller="Courses" asp-action="AddCourse">
+
+  <div class="mb-2">
+    <label asp-for="Name" class="form-label text-dark">Course</label>
+    <input type="text" class="form-control" asp-for="Name" id="Course" placeholder="Name of the course">
+    <span class="text-danger" asp-validation-for="Name"></span>  
+</div>
+
+ <div class="mb-2">
+    <label asp-for="Field" class="form-label text-dark">Field</label>
+    <input type="text" class="form-control" asp-for="Field" id="Field" placeholder="Field of knowledge"> 
+    <span class="text-danger" asp-validation-for="Field"></span>    
+</div>  
+
+
+<div class="mb-2">
+    <label asp-for="FinishDate" class="form-label text-dark">Completion</label>
+    <input type="date" class="form-control" asp-for="FinishDate" id="FinishDate" placeholder="dd/MM/yyyy">
+    <span class="text-danger" asp-validation-for="FinishDate"></span>    
+</div>
+
+
+<div class="mb-2">
+    <label asp-for="Length" class="form-label text-dark text-center">Workload</label>
+    <input type="number" class="form-control" asp-for="Length" id="Length" placeholder="Hours of workload">
+    <span class="text-danger" asp-validation-for="Length"></span>    
+</div>
+
+  <div class="d-flex gap-5 mt-4">
+    <button type="submit" class="btn btn-success w-50">Add</button>
+    <a class="btn btn-primary w-50" asp-controller="Courses" asp-action="Index">Back</a>
+  </div>
+
+
+</form>
+</div>

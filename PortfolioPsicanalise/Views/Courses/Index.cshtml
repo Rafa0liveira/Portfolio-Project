@@ -1,0 +1,57 @@
+﻿@model IEnumerable<CoursesModel>
+
+@{
+    ViewData["Title"] = "Courses";
+}
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <h1>@ViewData["Title"]</h1>
+        <a  class="btn btn-success mx-2" asp-controller="Courses" asp-action="AddCourse"><i class="bi bi-plus-circle"></i> New Course</a>
+    </div>
+
+    @if (TempData["SuccessfulAction"] != null)
+    {
+            <div class="alert alert-success text-dark" role="alert">
+            @TempData["SuccessfulAction"]
+            </div>
+    }
+    <table id="Courses" class="table table-light table-hover mt-5">
+    <thead>
+       
+        <tr>
+            <th scope="col" class="text-center">Course</th>
+            <th scope="col" class="text-center">Field</th>
+            <th scope="col" class="text-center">Completion</th>
+            <th scope="col" class="text-center">Workload (Hours)</th>
+            <th></th>
+        </tr>
+
+    </thead>
+    <tbody>
+            @if(Model != null)
+            {
+                @foreach (var course in Model )
+                {
+                    <tr class="text-center">
+                        <th scope="row">@course.Name</th>
+                        <td>@course.Field</td>
+                        <td>@Html.DisplayFor(modelcourse => course.FinishDate)</td>
+                        <td>@course.Length</td>
+                        
+                        <td>
+                            <a asp-controller="Courses" asp-action="EditCourse" asp-route-id="@course.Id" class="btn btn-warning mx-2"><i class="bi bi-pencil-square"></i> Edit</a>
+                            <a asp-controller="Courses" asp-action="DeleteCourse" asp-route-id="@course.Id" class="btn btn-danger mx-2"><i class="bi bi-trash3"></i> Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+    </tbody>
+    </table>
+</div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
