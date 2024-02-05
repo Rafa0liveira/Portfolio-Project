@@ -16,6 +16,22 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\orafa\Documents\C# Course\Portfolio\PortfolioPsicanalise\PortfolioPsicanalise
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/orafa/Documents/C\# Course/Portfolio/PortfolioPsicanalise/PortfolioPsicanalise/Views/Articles/AddArticle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWNsZXNcQWRkQXJ0aWNsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/orafa/Documents/C\# Course/Portfolio/PortfolioPsicanalise/PortfolioPsicanalise/Views/Articles/DeleteArticle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWNsZXNcRGVsZXRlQXJ0aWNsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/orafa/Documents/C\# Course/Portfolio/PortfolioPsicanalise/PortfolioPsicanalise/Views/Articles/EditArticle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWNsZXNcRWRpdEFydGljbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/orafa/Documents/C\# Course/Portfolio/PortfolioPsicanalise/PortfolioPsicanalise/Views/Articles/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWNsZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/orafa/Documents/C\# Course/Portfolio/PortfolioPsicanalise/PortfolioPsicanalise/Views/Books/AddBook.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va3NcQWRkQm9vay5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

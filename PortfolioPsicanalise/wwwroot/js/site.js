@@ -41,4 +41,9 @@ $(document).ready(function () {
     $('#Courses').DataTable()
 
 });
+$(document).ready(function () {
+
+    $('#Articles').DataTable()
+
+});
 

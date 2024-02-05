@@ -17,5 +17,10 @@ namespace PortfolioPsicanalise.Data
         {
             get; set;
         }
+
+        public DbSet<ArticlesModel> Articles
+        {
+        get; set; 
+        }
     }
 }
