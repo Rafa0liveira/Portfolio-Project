@@ -92,6 +92,36 @@ namespace PortfolioPsicanalise.Controllers
 
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public IActionResult SeeArticle(int id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            ArticlesModel article = _db.Articles.FirstOrDefault(x => x.Id == id);
+
+            if (article == null)
+            {
+                return NotFound();
+            }
+            return View(article);
+        }
+        [HttpPost]
+        public IActionResult SeeArticle(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            ArticlesModel article = _db.Articles.FirstOrDefault(x => x.Id == id);
+            if (article == null)
+            {
+                return NotFound();
+            }
+
+            return View(article);
+        }
 
     }
 }

@@ -32,6 +32,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWNsZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/orafa/Documents/C\# Course/Portfolio/PortfolioPsicanalise/PortfolioPsicanalise/Views/Articles/SeeArticle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWNsZXNcU2VlQXJ0aWNsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/orafa/Documents/C\# Course/Portfolio/PortfolioPsicanalise/PortfolioPsicanalise/Views/Books/AddBook.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va3NcQWRkQm9vay5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -66,10 +70,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/orafa/Documents/C\# Course/Portfolio/PortfolioPsicanalise/PortfolioPsicanalise/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/orafa/Documents/C\# Course/Portfolio/PortfolioPsicanalise/PortfolioPsicanalise/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/orafa/Documents/C\# Course/Portfolio/PortfolioPsicanalise/PortfolioPsicanalise/Views/Shared/Error.cshtml]
