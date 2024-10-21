@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PortfolioPsicanalise.Data;
+using PortfolioPsicanalise.Migrations;
 using PortfolioPsicanalise.Models;
 
 namespace PortfolioPsicanalise.Controllers
@@ -13,7 +15,13 @@ namespace PortfolioPsicanalise.Controllers
         }
         public IActionResult Index()
         {
-            IEnumerable<CoursesModel> courses = _db.Courses;
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            var userId = User.Identity.Name;
+
+            IEnumerable<CoursesModel> courses = _db.Courses.Where(c=> c.UserId == userId);
             return View(courses);
         }
         [HttpGet]
@@ -22,40 +30,62 @@ namespace PortfolioPsicanalise.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult AddCourse(CoursesModel cs)
+
+        public async Task<IActionResult> AddCourse(CoursesModel cs)
+        
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            
+            var userId = User.Identity.Name;
+            ModelState.Remove("UserId");
+
+            cs.UserId = userId;
+
             if (ModelState.IsValid)
             {
                 _db.Courses.Add(cs);
-                _db.SaveChanges();
-                
-                TempData["SuccessfulAction"] = "Course added successfully";
-
+                await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View();
         }
         [HttpGet]
-        public IActionResult EditCourse(int? id)
+        public async Task<IActionResult> EditCourse(int? id)
         {
-            if(id == null || id == 0)
+            if (!User.Identity.IsAuthenticated)
             {
-                return NotFound();
+                return RedirectToAction("Login", "Account");
             }
-            CoursesModel course = _db.Courses.FirstOrDefault(x => x.Id == id);
+
+            string userId = User.Identity.Name;
+           CoursesModel course = await _db.Courses.FirstOrDefaultAsync(c => c.UserId == userId );
+
             if (course == null)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Courses");
             }
             return View(course);
         }
         [HttpPost]
-        public IActionResult EditCourse(CoursesModel cs)
+        public async Task<IActionResult> EditCourse(CoursesModel cs)
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            string userId = User.Identity.Name;
+            ModelState.Remove("UserId");
+
+            cs.UserId = userId;
+
             if (ModelState.IsValid)
             {
                 _db.Courses.Update(cs);
-                _db.SaveChanges();
+                await _db.SaveChangesAsync();
 
                 TempData["SuccessfulAction"] = "Course edited successfully";
                 return RedirectToAction("Index");
@@ -64,26 +94,29 @@ namespace PortfolioPsicanalise.Controllers
         }
 
         [HttpGet]
-        public IActionResult DeleteCourse(int? id)
+        public async Task<IActionResult> DeleteCourse()
         {
-            if (id == null || id == 0)
+            if (!User.Identity.IsAuthenticated)
             {
-            return NotFound();
+                return RedirectToAction("Login", "Account");
             }
-            CoursesModel cs = _db.Courses.FirstOrDefault(x => x.Id == id);
 
-            if (cs == null)
+            string userId = User.Identity.Name;
+            
+            CoursesModel course = await _db.Courses.FirstOrDefaultAsync(c => c.UserId == userId);
+
+            if (course == null)
             {
-            return NotFound(); 
+                return RedirectToAction("Index", "Courses");
             }
-            return View(cs);
+            return View(course);
         }
         [HttpPost]
         public IActionResult DeleteCourse(CoursesModel cs)
         {
             if (cs == null)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Courses");
             }
             _db.Courses.Remove(cs);
             _db.SaveChanges();
@@ -91,6 +124,24 @@ namespace PortfolioPsicanalise.Controllers
             TempData["SuccessfulAction"] = "Course deleted successfully";
 
             return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> SeeCourse(int? id, string userName)
+        {
+            if (id == null || id == 0)
+            {
+                return RedirectToAction("Index", "Courses");
+            }
+            CoursesModel course = _db.Courses.FirstOrDefault(x => x.Id == id);
+
+            if (course == null)
+            {
+                return NotFound();
+            }
+
+            ViewBag.UserName = userName;
+            return View(course);
+
         }
     }
 }

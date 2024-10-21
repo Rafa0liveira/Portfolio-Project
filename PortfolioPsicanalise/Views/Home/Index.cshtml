@@ -1,7 +1,12 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
+@if (TempData["SuccessfulAction"] != null)
+{
+                <div class="alert alert-success text-dark" role="alert">
+        @TempData["SuccessfulAction"]
+                </div>
+}
 <div class="text-center">
     <h1 class="display-4">Portfolio</h1>
     <p>"Intellectual growth should commence at birth and cease only at death"</p>

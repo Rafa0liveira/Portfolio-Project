@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "_Layout-LoggedOff";  // ou qualquer outro layout que você tenha
+    ViewData["Title"] = "User Not Found";
+}
+
+<div class="container bg-light p-5 rounded-5">
+    <div class="text-center">
+        <h1>User Not Found</h1>
+        <p>The user with the name "@ViewBag.UserName" does not exist in our system.</p>
+        <a class="btn btn-primary" href="@Url.Action("LandingPage", "Home")">Back to Home</a>
+    </div>
+</div>

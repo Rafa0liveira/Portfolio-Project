@@ -46,4 +46,9 @@ $(document).ready(function () {
     $('#Articles').DataTable()
 
 });
+$(document).ready(function () {
+
+    $('#Users').DataTable()
+
+});
 

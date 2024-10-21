@@ -1,0 +1,61 @@
+﻿@model UsersModel
+@{
+    ViewData["Title"] = "Edit User's details";
+}
+<div class="container bg-primary-subtle p-5 rounded-5">
+
+    <div class="mb-5 text-center">
+        <h1 class="text-dark">@ViewData["Title"]</h1>
+    </div>
+    <form method="post" asp-controller="Users" asp-action="EditUser">
+        <input type="hidden" asp-for="Id"/>
+
+
+  <div class="mb-3">
+        <label for="Name" class="form-label text-dark">Name</label>
+        <input type="text" class="form-control" asp-for="Name" id="Name" readonly>
+   </div>
+
+  <div class="mb-3">
+    <label for="Email Address" class="form-label text-dark">Email</label>
+    <input type="text" class="form-control" asp-for="Email" id="Email" placeholder="User's email address'">
+    <span class="text-danger" asp-validation-for="Email"></span>    
+</div>
+
+
+ <div class="mb-3">
+        <label for="NewPassword" class="form-label text-dark">New Password</label>
+        <div class="input-group">
+            <input type="password" class="form-control" id="NewPassword" asp-for="NewPassword" placeholder="Enter new password">
+            <button type="button" class="btn btn-outline-secondary" id="togglePassword">Show</button>
+        </div>
+        <span class="text-danger" asp-validation-for="NewPassword"></span>
+    </div>
+  <div class="form-group d-flex gap-5 mt-5">
+
+    <button type="submit" class="btn btn-success w-50">Save Changes</button>
+    <a class="btn btn-primary w-50" asp-controller="Home" asp-action="Index">Back</a>
+    
+ </div>
+ <div class="form-group mt-5 text-center">
+    <a asp-controller="Users" asp-action="Index" class="btn btn-danger mx-auto">
+        <i class="bi bi-trash3"></i> Delete
+    </a>
+</div>
+
+</form>
+</div>
+<script>
+    // Mostrar/ocultar a nova senha enquanto está sendo digitada
+document.getElementById('togglePassword').addEventListener('click', function() {
+    let newPasswordField = document.getElementById('NewPassword');
+    let type = newPasswordField.getAttribute('type') === 'password' ? 'text' : 'password';
+    newPasswordField.setAttribute('type', type);
+    this.textContent = type === 'password' ? 'Show' : 'Hide';
+});
+</script>
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

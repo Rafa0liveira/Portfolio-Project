@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Routing.Constraints;
 using System.ComponentModel.DataAnnotations;
 
@@ -28,7 +29,12 @@ namespace PortfolioPsicanalise.Models
         {
             get; set;
         }
-       
-       
+
+        [BindNever]
+        public string UserId
+        {
+            get; set;
+        }
+
     }
 }

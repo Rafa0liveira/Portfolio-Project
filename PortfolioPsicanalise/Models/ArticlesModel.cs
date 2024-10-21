@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.TagHelpers;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.TagHelpers;
 
 namespace PortfolioPsicanalise.Models
 {
@@ -21,7 +22,11 @@ namespace PortfolioPsicanalise.Models
             get; set;
         } = DateTime.Now;
 
-
+        [BindNever]
+        public string UserId
+        {
+            get; set;
+        }
 
     }
 }

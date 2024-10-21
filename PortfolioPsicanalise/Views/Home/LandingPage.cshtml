@@ -1,0 +1,170 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Online Porfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+body {font-family: "Times New Roman", Georgia, Serif;}
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display";
+  letter-spacing: 5px;
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+    <a href="#home" class="w3-bar-item w3-button">Welcome to the online Portfolio</a>
+    <!-- Right-sided navbar links. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="#about" class="w3-bar-item w3-button">About</a>
+      <a href="#Search" class="w3-bar-item w3-button">Search</a>
+      <a href="#FAQ" class="w3-bar-item w3-button">FAQ</a>
+      <a class="w3-bar-item w3-button" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="w3-display-container w3-content w3-wide" style="max-width:1600px;min-width:500px; text-align: center;" id="home">
+  <img class="w3-image" src="~/img/LPmain-img.webp" alt="Girl reading" style="width: 700px; height: 700px; display: inline-block;">
+  <div class="w3-display-bottomleft w3-padding-large w3-opacity">
+    <h1 class="w3-xxlarge"></h1>
+  </div>
+</header>
+
+
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:1100px">
+
+  <!-- About Section -->
+  <div class="w3-row w3-padding-64" id="about">
+    <div class="w3-col m6 w3-padding-large w3-hide-small">
+     <img src="img/boy-study.jpg" class="w3-round w3-image w3-opacity-min" alt="stack of books" width="600" height="750">
+    </div>
+
+    <div class="w3-col m6 w3-padding-large">
+      <h1 class="w3-center">About The Portfolio</h1><br>
+      <h5 class="w3-center"></h5>
+      <p class="w3-large">The motivation behind the creation of this project stemmed from the growing need 
+        for students and professionals to have a secure and organized digital space to showcase their academic
+        and professional journeys. Especially for those working in fields like psychoanalysis and others that 
+        do not require formal certification, having an online portfolio that highlights their qualifications, 
+        studies, and academic productions is crucial.
+        This online portfolio was developed to be a versatile and accessible tool, allowing users to organize 
+        and display their work, completed courses, published articles, and studied books in a structured manner.
+        Additionally, it offers a space for the creation and publication of new articles, serving as a showcase 
+        for their achievements and knowledge.
+
+        Whether you’re a student looking to organize your learning path or a professional wishing to share 
+        your accomplishments with the world, this online portfolio provides an effective and professional way 
+        to demonstrate your skills and experiences.</p>
+      <p class="w3-large w3-text-grey w3-hide-medium"></p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Search Section -->
+       
+  <div class="w3-row w3-padding-64" id="Search">
+    <div class="w3-col l6 w3-padding-large">
+      <h1 class="w3-center">Search for a Portfolio</h1><br>
+      <p class="w3-text-grey">Looking for someone’s portfolio? Enter their full name below
+to explore their academic journey,professional achievements, and published works. Discover
+the unique paths taken by professionals and students alike, all in one place.</p>
+
+<br>
+
+<form method="get" asp-action="SearchUser" asp-controller="Home">
+    <div class="input-group mb-3">
+        <input type="text" name="userName" class="form-control" placeholder="Enter full name of the user" required>
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+    </div>
+</form>
+
+    </div>
+
+    <div class="w3-col l6 w3-padding-large">
+      <img src="img/stack_of_books_illustration_by_gabimedia_dg7fmbl-fullview.jpg" class="w3-round w3-image w3-opacity-min" alt="Menu" style="width:100%">
+    </div>
+  </div>
+
+  <hr>
+
+ <!-- FAQ Section -->
+ <div class="w3-row w3-padding-64" id="FAQ">
+    <div class="w3-col l12 w3-padding-large">
+      <h1 class="w3-center">Frequently Asked Questions</h1><br>
+
+      <div class="faq-item w3-padding-16">
+        <h4><b>How do I add a new book, course, or article?</b></h4>
+        <p>Once you are logged in, simply navigate to the relevant section (Books, Courses, or Articles) and click "Add". Fill in the required fields and submit your entry.</p>
+      </div>
+
+      <div class="faq-item w3-padding-16">
+        <h4><b>Can I edit or delete my entries?</b></h4>
+        <p>Yes, after logging in, go to your list of entries and click on the one you wish to edit or delete. You will find options to update or remove the entry.</p>
+      </div>
+
+      <div class="faq-item w3-padding-16">
+        <h4><b>How can I view another user's portfolio?</b></h4>
+        <p>Use the search function on the landing page to enter the full name of the user whose portfolio you wish to view.</p>
+      </div>
+
+      <div class="faq-item w3-padding-16">
+        <h4><b>Is the portfolio private or public?</b></h4>
+        <p>Your personal entries are only visible to you unless you decide to share your portfolio with others by providing them access through your profile settings.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <!-- Contact Section -->
+  <div class="w3-container w3-padding-64" id="contact">
+    <h1>Contact</h1><br>
+    <p>If you'd like to get in touch with the developer or follow updates on this project, feel free to connect through the following social media channels:</p>
+
+    <div class="w3-left">
+        <a href="https://www.linkedin.com/in/rafael-oliveirabsse/" target="_blank" class="w3-button w3-light-grey w3-section">
+            <i class="fa fa-linkedin w3-margin-right"></i> LinkedIn
+        </a>
+        <a href="https://github.com/Rafa0liveira" target="_blank" class="w3-button w3-light-grey w3-section">
+            <i class="fa fa-instagram w3-margin-right"></i> Github
+        </a>
+        <p class="w3-text-blue-grey w3-large"><b>Stay connected for updates and professional inquiries.</b></p>
+    </div>
+
+
+  </div>
+
+<!-- End page content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-light-grey w3-padding-32">
+  <p>Powered by <a href="https://github.com/Rafa0liveira" title="Rafael Oliveira Development inc." target="_blank" class="w3-hover-text-green">Rafael Oliveira Development Inc.</a></p>
+</footer>
+
+ 
+
+</body>
+</html>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+ }

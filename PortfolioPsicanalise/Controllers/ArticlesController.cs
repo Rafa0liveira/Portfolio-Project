@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PortfolioPsicanalise.Data;
 using PortfolioPsicanalise.Models;
 
@@ -13,7 +14,14 @@ namespace PortfolioPsicanalise.Controllers
         }
         public IActionResult Index()
         {
-            IEnumerable<ArticlesModel> articles = _db.Articles; 
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var userId = User.Identity.Name;
+
+            IEnumerable<ArticlesModel> articles = _db.Articles.Where(a => a.UserId == userId); 
             return View(articles);
         }
         [HttpGet]
@@ -22,36 +30,90 @@ namespace PortfolioPsicanalise.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult AddArticle(ArticlesModel art)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddArticle(ArticlesModel art)
         {
-            if (ModelState.IsValid)
+            // Verificar se o usuário está autenticado
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            // Associar o UserId ao nome do usuário autenticado
+            var userId = User.Identity.Name;
+            Console.WriteLine($"UserId (User.Identity.Name): {userId}");
+
+            // Remover a validação do campo UserId do ModelState
+            ModelState.Remove("UserId");
+
+            // Associar o UserId ao registro do livro
+            art.UserId = userId;
+            Console.WriteLine($"UserId associated with book: {art.UserId}");
+
+            // Verificar se o ModelState é válido
+            if (!ModelState.IsValid)
+            {
+                Console.WriteLine("ModelState is not valid. Errors:");
+                foreach (var modelState in ModelState.Values)
+                {
+                    foreach (var error in modelState.Errors)
+                    {
+                        Console.WriteLine($"Error: {error.ErrorMessage}");
+                    }
+                }
+                return View(art);  // Retornar a view com os erros de validação
+            }
+
+            // Tentar adicionar o livro ao banco de dados
+            try
             {
                 _db.Articles.Add(art);
-                _db.SaveChanges();
-                TempData["SuccessfulAction"] = "Article added successfully";
+                await _db.SaveChangesAsync();
 
+                TempData["SuccessfulAction"] = "Article added successfully";
                 return RedirectToAction("Index");
             }
-            return View();
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error saving article to database: {ex.Message}");
+                return View(art);  // Retornar a view com o erro
+            }
         }
         [HttpGet]
-        public IActionResult EditArticle(int? id)
+        public async Task<IActionResult> EditArticle()
         {
-            if (id == null || id == 0)
+            if (!User.Identity.IsAuthenticated)
             {
-                return NotFound();
+                return RedirectToAction("Login", "Account");
             }
-            ArticlesModel article = _db.Articles.FirstOrDefault(x => x.Id == id);
+
+            var userId = User.Identity.Name;
+           
+            ArticlesModel article = await _db.Articles.FirstOrDefaultAsync(a => a.UserId == userId);
 
             if (article == null)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Articles");
             }
             return View(article);
         }
         [HttpPost]
         public IActionResult EditArticle(ArticlesModel art)
         {
+            // Verificar se o usuário está autenticado
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            // Associar o UserId ao nome do usuário autenticado
+            var userId = User.Identity.Name;
+            // Remover a validação do campo UserId do ModelState
+            ModelState.Remove("UserId");
+
+            // Associar o UserId ao registro do livro
+            art.UserId = userId;
+
             if (ModelState.IsValid)
             {
                 _db.Articles.Update(art);
@@ -64,64 +126,56 @@ namespace PortfolioPsicanalise.Controllers
             return View(art);
         }
         [HttpGet]
-        public IActionResult DeleteArticle(int id)
+        public async Task<IActionResult> DeleteArticle(int id)
         {
             if (id == null || id == 0)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Articles");
             }
-            ArticlesModel article = _db.Articles.FirstOrDefault(x => x.Id == id);
+            
+
+            ArticlesModel article = await _db.Articles.FirstOrDefaultAsync(x => x.Id == id );
 
             if (article == null)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Articles");
             }
             return View(article);
         }
         [HttpPost]
-        public IActionResult DeleteArticle(ArticlesModel article)
+        public async Task<IActionResult> DeleteArticle(ArticlesModel article)
         {
             if (article == null)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Articles");
             }
 
             _db.Articles.Remove(article);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
             TempData["SuccessfulAction"] = "Article deleted successfully";
 
             return RedirectToAction("Index");
         }
         [HttpGet]
-        public IActionResult SeeArticle(int id)
+        public async Task<IActionResult> SeeArticle(int? id, string userName)
         {
             if (id == null || id == 0)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Articles");
             }
             ArticlesModel article = _db.Articles.FirstOrDefault(x => x.Id == id);
 
             if (article == null)
             {
-                return NotFound();
-            }
-            return View(article);
-        }
-        [HttpPost]
-        public IActionResult SeeArticle(int? id)
-        {
-            if (id == null || id == 0)
-            {
-                return NotFound();
-            }
-            ArticlesModel article = _db.Articles.FirstOrDefault(x => x.Id == id);
-            if (article == null)
-            {
-                return NotFound();
+                return RedirectToAction("Index", "Articles");
             }
 
+            ViewBag.UserName = userName;
             return View(article);
-        }
 
+        }
+        
+
+        }
     }
-}
+

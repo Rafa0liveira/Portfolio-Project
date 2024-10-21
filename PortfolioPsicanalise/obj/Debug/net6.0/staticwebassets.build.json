@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "o6Mke2yKTflCEqcz7lYnzFthXod7dIkV6AGXmS+6U3k=",
+  "Hash": "0Ergs4pGi8jOlTxMy2r3oIxs6pHWkj2Ruv4o0ZkJSek=",
   "Source": "PortfolioPsicanalise",
   "BasePath": "_content/PortfolioPsicanalise",
   "Mode": "Default",
@@ -168,6 +168,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\girl-reading.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\orafa\\Documents\\C# Course\\Portfolio\\PortfolioPsicanalise\\PortfolioPsicanalise\\wwwroot\\img\\LPmain-img.webp",
+      "SourceId": "PortfolioPsicanalise",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\orafa\\Documents\\C# Course\\Portfolio\\PortfolioPsicanalise\\PortfolioPsicanalise\\wwwroot\\",
+      "BasePath": "_content/PortfolioPsicanalise",
+      "RelativePath": "img/LPmain-img.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\LPmain-img.webp"
     },
     {
       "Identity": "C:\\Users\\orafa\\Documents\\C# Course\\Portfolio\\PortfolioPsicanalise\\PortfolioPsicanalise\\wwwroot\\img\\stack_of_books_illustration_by_gabimedia_dg7fmbl-fullview.jpg",

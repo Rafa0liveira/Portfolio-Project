@@ -1,0 +1,30 @@
+﻿
+@model ArticlesModel
+@{
+    Layout = "_Layout-LoggedOff";
+    ViewData["Title"] = "View Article";
+}
+<div class="container bg-light-subtle p-5 rounded-5" >
+
+     <div class="form-group mb-3 mt-3 text-black" >
+                <h3 style="text-align:center"><label>@Html.Raw(Model.Title)</label></h3>
+     </div>
+
+     <div class="mb-3 mt-3 text-black"  style="font-family: 'Times New Roman', Times, serif'Franklin Gothic Medium'">
+        @Html.Raw(Model.Text)       
+    </div>
+
+ <div class="form-group gap-5 mt-5 text-center">
+    <a asp-controller="Home" asp-action="SearchUser" asp-route-id="@Model.Id" asp-route-userName="@ViewBag.userName" class="btn btn-info mx-2">
+       Back
+    </a>
+</div>
+
+
+</div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,5 +1,7 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using PortfolioPsicanalise.Models;
 
 namespace PortfolioPsicanalise.Models
 {
@@ -32,6 +34,10 @@ namespace PortfolioPsicanalise.Models
             get; set;
         } = DateTime.Today;
 
-               
+        [BindNever]
+        public string UserId
+        {
+            get; set;
+        }
     }
 }

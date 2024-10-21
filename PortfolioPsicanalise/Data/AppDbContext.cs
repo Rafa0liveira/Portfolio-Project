@@ -22,5 +22,12 @@ namespace PortfolioPsicanalise.Data
         {
         get; set; 
         }
+        public DbSet<UsersModel> Users
+
+        {
+        get; set; }
+
+      
+
     }
 }

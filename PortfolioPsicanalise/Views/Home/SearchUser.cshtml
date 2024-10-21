@@ -1,0 +1,127 @@
+﻿@using PortfolioPsicanalise.ViewModels
+@model SearchUserViewModel
+
+@{
+    Layout = "_Layout-LoggedOff";
+    
+}
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <h2 class="mx-auto">Articles</h2>
+    </div>
+
+   <table id="Articles" class="table table-light table-hover mt-5">
+        <thead>
+            <tr>
+            <th scope="col" class="text-center">Title</th>
+            <th scope="col" class="text-center">Last Update</th>
+            <th></th>
+            </tr>
+        </thead>
+   <tbody class="align-text-center">
+            @if (Model != null)
+            {
+                foreach (var article in Model.Articles)
+                {
+                                    <tr class="text-center">
+                                     <th scope="row">@article.Title</th>
+                                     <td>@article.LastUpdate</td>
+                                     <td>
+
+                         <a asp-controller="Home" asp-action="GuestSeeArticle" asp-route-id="@article.Id" asp-route-userName="@ViewBag.userName" class="btn btn-info mx-2">
+                    <i class="bi bi-info-circle"></i> View
+                </a>
+
+
+                                     </td>
+                                    </tr>
+                }
+            }
+
+   </tbody> 
+
+    </table>
+<div class="container">
+    
+      <hr>
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-5 ">
+        <h2 class="mx-auto">Books</h2>
+       
+    </div>
+
+<table id="Books" class="table table-light table-hover mt-5">
+    <thead>
+
+        <tr>
+            <th scope="col" class="text-center">Book</th>
+            <th scope="col" class="text-center">Author</th>
+            <th scope="col" class="text-center">Field</th>
+            <th scope="col" class="text-center">Last Update</th>
+            
+        </tr>
+
+    </thead>
+    <tbody>
+
+                @if (Model != null)
+                {
+                    @foreach (var book in Model.Books)
+                    {
+                     <tr class="text-center">
+                        <th scope="row">@book.Book</th>
+                        <td>@book.AuthorName</td>
+                        <td>@book.Field</td>
+                        <td>@Html.DisplayFor(modelbook => book.Date)</td>
+                       
+                       
+                     </tr>
+                    }
+                }
+
+
+    </tbody>
+
+</table>
+  <hr>
+</div>
+   
+    <hr>
+
+      <div class="d-flex justify-content-between align-items-center mb-5">
+        <h2 class="mx-auto">Courses</h2>
+     </div>
+    <table id="Courses" class="table table-light table-hover mt-5">
+    <thead>
+
+        <tr>
+            <th scope="col" class="text-center">Course</th>
+            <th scope="col" class="text-center">Field</th>
+            <th scope="col" class="text-center">Completion</th>
+            <th scope="col" class="text-center">Workload (Hours)</th>
+           
+        </tr>
+
+    </thead>
+    <tbody>
+                @if (Model != null)
+                {
+                    @foreach (var course in Model.Courses)
+                    {
+                                    <tr class="text-center">
+                                        <th scope="row">@course.Name</th>
+                                        <td>@course.Field</td>
+                                        <td>@Html.DisplayFor(modelcourse => course.FinishDate)</td>
+                                        <td>@course.Length</td>
+                                                
+
+                                    </tr>
+                    }
+                }
+    </tbody>
+    </table>
+    <hr>
+    <a class="btn btn-primary w-10 d-inline float-end" asp-controller="Home" asp-action="LandingPage">Back</a>
+  <hr>
+</div>

@@ -9,5 +9,8 @@
     <WebStackScaffolding_IsLayoutPageSelected>False</WebStackScaffolding_IsLayoutPageSelected>
     <WebStackScaffolding_IsPartialViewSelected>False</WebStackScaffolding_IsPartialViewSelected>
     <WebStackScaffolding_IsReferencingScriptLibrariesSelected>False</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
+    <NameOfLastUsedPublishProfile>C:\Users\orafa\Documents\C# Course\Portfolio\PortfolioPsicanalise\PortfolioPsicanalise\Properties\PublishProfiles\IISProfile.pubxml</NameOfLastUsedPublishProfile>
+    <WebStackScaffolding_ControllerDialogWidth>650.4</WebStackScaffolding_ControllerDialogWidth>
+    <WebStackScaffolding_DbContextTypeFullName>PortfolioPsicanalise.Data.AppDbContext</WebStackScaffolding_DbContextTypeFullName>
   </PropertyGroup>
 </Project>

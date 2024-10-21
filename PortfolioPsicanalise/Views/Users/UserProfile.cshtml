@@ -1,0 +1,29 @@
+﻿@model UsersModel
+
+<div class="container bg-primary-subtle p-5 rounded-5">
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <h2 class="mx-auto">User Profile: @User.Identity.Name</h2>
+    </div>
+    <table id="Users" class="table table-light table-hover mt-5">
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">Name</th>
+                <th scope="col" class="text-center">Email</th>
+                <th scope="col" class="text-center">Password</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                    <tr class="text-center">
+                        <th scope="row">@Model.Name</th>
+                        <td>@Model.Email</td>
+                        <td>@Model.PasswordHash</td>
+                    </tr>
+            }
+        </tbody>
+    </table>
+    <hr>
+        <a class="btn btn-primary w-10 d-inline float-end" asp-controller="Users" asp-action="Index">Back</a>
+    <hr>
+</div>
