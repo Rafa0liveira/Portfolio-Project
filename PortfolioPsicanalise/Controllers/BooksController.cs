@@ -66,10 +66,10 @@ namespace PortfolioPsicanalise.Controllers
                         Console.WriteLine($"Error: {error.ErrorMessage}");
                     }
                 }
-                return View(bk);  // Retornar a view com os erros de validação
+                return View(bk);  
             }
 
-            // Tentar adicionar o livro ao banco de dados
+            
             try
             {
                 _db.Books.Add(bk);
